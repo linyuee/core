@@ -12,7 +12,7 @@ namespace Pingqu\Auth;
 class Signature
 {
     //POST时采用的签名算法
-    public static function doSignMd5($data, $secret = '') {
+    public static function SignMd5($data, $secret = '') {
 
         //签名步骤一：按字典序排序参数
         ksort($data);
