@@ -6,7 +6,7 @@
  * Time: 上午11:01
  */
 
-namespace Pingqu\Auth;
+namespace Linyuee\Auth;
 
 
 class Signature

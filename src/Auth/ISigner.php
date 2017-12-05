@@ -17,7 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace Pingqu\Auth;
+namespace Linyuee\Auth;
 
 interface ISigner
 {

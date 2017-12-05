@@ -17,7 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace Pingqu\Http;
+namespace Linyuee\Http;
 
 use Pingqu\Exception;
 
