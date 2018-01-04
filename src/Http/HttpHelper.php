@@ -19,7 +19,7 @@
  */
 namespace Linyuee\Http;
 
-use Pingqu\Exception;
+
 
 class HttpHelper
 {
@@ -62,7 +62,7 @@ class HttpHelper
         $httpResponse->setBody(curl_exec($ch));
         $httpResponse->setStatus(curl_getinfo($ch, CURLINFO_HTTP_CODE));
         if (curl_errno($ch)) {
-            throw new \ApiException('pingqu-cloud-sdk is unavailable');
+            throw new \Linyuee\Exception\ApiException('pingqu-cloud-sdk is unavailable');
         }
         curl_close($ch);
 
@@ -77,6 +77,33 @@ class HttpHelper
         }
 
         return $httpHeader;
+    }
+
+    public static function httpGet($url){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+
+        $output = curl_exec($ch);
+
+        curl_close($ch);
+        return $output;
+    }
+
+    public static function httpPost($url,$data){
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        if (!empty($data)){
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        }
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($curl);
+        curl_close($curl);
+        return $output;
     }
 
 
